@@ -7,523 +7,345 @@
 <title>Somewhere Between Us 🖤</title>
 
 <style>
-:root {
-  --bg: #08060d;
-  --purple: #bd9aff;
-  --muted: #b6aabe;
-  --panel: #171020;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  background: var(--bg);
-  color: #f7f1ff;
-  font-family: Georgia, serif;
+  background: #08060d;
+  color: #f6efff;
+  font-family: "Segoe UI", Arial, sans-serif;
   overflow-x: hidden;
 }
 
-#sky {
+.background {
   position: fixed;
   inset: 0;
   z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 30%, #37184855, transparent 60%),
-    radial-gradient(ellipse at 80% 90%, #25133e55, transparent 50%);
+    radial-gradient(ellipse at 20% 20%, #32174c 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 80%, #211039 0%, transparent 45%),
+    #08060d;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
 }
 
 .star {
   position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
+  background: #d6b5ff;
   animation: twinkle 3s infinite alternate;
 }
 
 @keyframes twinkle {
-  from { opacity: .15; }
-  to { opacity: 1; }
-}
-
-.particle {
-  position: absolute;
-  bottom: -20px;
-  color: var(--purple);
-  animation: rise var(--duration) linear forwards;
-}
-
-@keyframes rise {
-  0% { transform: translateY(0); opacity: 0; }
-  15% { opacity: .8; }
-  100% { transform: translateY(-110vh) translateX(45px); opacity: 0; }
-}
-
-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 25px 7%;
-  display: flex;
-  justify-content: space-between;
-  font: 10px Arial, sans-serif;
-  letter-spacing: 3px;
-}
-
-nav a {
-  color: var(--purple);
-  text-decoration: none;
+  from { opacity: .15; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1.5); }
 }
 
 section {
   min-height: 100vh;
+  padding: 80px 22px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 760px;
   text-align: center;
-  padding: 100px 24px;
-  scroll-margin-top: 20px;
+  animation: appear 1.2s ease both;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .eyebrow {
-  color: var(--purple);
-  font: 10px Arial, sans-serif;
-  letter-spacing: 4px;
-  margin-bottom: 25px;
+  color: #c39aff;
+  letter-spacing: 5px;
   text-transform: uppercase;
+  font-size: 11px;
+  margin-bottom: 25px;
 }
 
 h1 {
-  font-size: clamp(44px, 9vw, 90px);
-  font-weight: normal;
+  font-size: clamp(43px, 9vw, 78px);
   line-height: 1.1;
+  margin-bottom: 25px;
 }
 
 h2 {
-  font-size: clamp(34px, 6vw, 58px);
-  font-weight: normal;
-  line-height: 1.2;
+  font-size: clamp(28px, 6vw, 43px);
+  margin-bottom: 25px;
 }
 
-em { color: var(--purple); }
+.purple {
+  color: #c39aff;
+}
 
 p {
-  max-width: 540px;
-  margin: 22px auto 0;
-  color: var(--muted);
-  font-size: 15px;
+  color: #c8bdd3;
+  font-size: 16px;
   line-height: 1.9;
+  margin: 0 auto 20px;
+  max-width: 600px;
 }
 
 .heart {
-  font-size: 55px;
+  font-size: 48px;
   margin-bottom: 25px;
-  animation: pulse 2s infinite;
-  filter: drop-shadow(0 0 20px #b27cff88);
+  animation: heartbeat 2s infinite;
 }
 
-@keyframes pulse {
+@keyframes heartbeat {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.12); }
+  50% { transform: scale(1.13); }
 }
 
-.btn {
+.button {
   display: inline-block;
-  padding: 15px 22px;
-  margin: 30px 4px 0;
-  background: transparent;
-  border: 1px solid #8b6ba8;
-  color: #f0e4ff;
-  font: 10px Arial, sans-serif;
-  letter-spacing: 2px;
-  cursor: pointer;
+  padding: 14px 27px;
+  border-radius: 30px;
+  background: #b28aef;
+  color: #130a20;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 15px;
   transition: .3s;
 }
 
-.btn:hover {
-  background: var(--purple);
-  color: #100818;
-  box-shadow: 0 0 25px #bd9aff44;
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px #b28aef66;
 }
 
-button:focus-visible, a:focus-visible {
-  outline: 2px solid white;
-  outline-offset: 4px;
+.letter {
+  margin-top: 35px;
+  padding: 30px 25px;
+  border: 1px solid #b28aef55;
+  border-radius: 22px;
+  background: #120c1dcc;
+  box-shadow: 0 0 50px #8e54d51a;
+  text-align: left;
 }
 
-.rule {
-  width: 50px;
+.letter h2 {
+  text-align: center;
+}
+
+.letter p {
+  font-size: 15px;
+}
+
+.signature {
+  color: #c39aff;
+  text-align: right;
+  margin-top: 28px;
+}
+
+.divider {
+  width: 70px;
   height: 1px;
-  background: var(--purple);
+  background: #b28aef;
   margin: 30px auto;
 }
 
-.panel {
-  width: min(100%, 580px);
-  margin-top: 35px;
-  padding: clamp(24px, 5vw, 45px);
-  border: 1px solid #bd9aff35;
-  background: #171020db;
-  box-shadow: 0 0 50px #8b55be0d;
-}
-
-.timeline {
-  max-width: 540px;
-  width: 100%;
-  text-align: left;
-  margin-top: 45px;
-}
-
-.event {
-  border-left: 1px solid #80649a;
-  padding: 0 0 35px 25px;
-  position: relative;
-}
-
-.event::before {
-  content: "";
-  position: absolute;
-  left: -5px;
-  top: 4px;
-  width: 9px;
-  height: 9px;
-  background: var(--purple);
-  border-radius: 50%;
-}
-
-.event:last-child { border-left-color: transparent; }
-
-.event h3 {
-  color: #e5d4fa;
-  font-size: 20px;
-  font-weight: normal;
-}
-
-.event p {
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-input[type="file"] {
-  width: 100%;
-  margin-top: 25px;
-  color: #d6c7e4;
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  color: #83758f;
   font-size: 12px;
 }
 
-audio { width: 100%; margin-top: 20px; }
+@media (max-width: 500px) {
+  section {
+    padding: 65px 18px;
+  }
 
-#letter { display: none; text-align: left; }
-
-#letter p { margin-top: 18px; }
-
-.signature {
-  color: var(--purple);
-  font-style: italic;
-  margin-top: 25px;
-}
-
-footer {
-  position: relative;
-  text-align: center;
-  padding: 30px 15px;
-  color: #786b86;
-  font: 9px Arial, sans-serif;
-  letter-spacing: 3px;
-}
-
-.small {
-  color: #766a83;
-  margin-top: 50px;
-  font: 10px Arial, sans-serif;
-  letter-spacing: 3px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
+  .letter {
+    padding: 25px 18px;
   }
 }
 </style>
 </head>
 
 <body>
-<div id="sky" aria-hidden="true"></div>
 
-<nav>
-  <span>J. / 𖤐</span>
-  <a href="#story">OUR STORY ↓</a>
-</nav>
+<div class="background"></div>
+<div class="stars" id="stars"></div>
 
-<main>
+<!-- OPENING -->
+<section>
+  <div class="container">
+    <div class="eyebrow">A message from the heart</div>
+    <div class="heart">🖤</div>
 
-<!-- INTRO -->
-<section id="home">
-  <div class="eyebrow">An unfinished chapter</div>
-  <div class="heart">🖤</div>
-  <h1>Somewhere<br>between <em>us.</em></h1>
+    <h1>
+      Somewhere<br>
+      Between <span class="purple">Us.</span>
+    </h1>
 
-  <p>
-    Some people become memories before we are
-    ready to let them go. Some stories leave
-    questions we never got to ask.
-  </p>
-
-  <a class="btn" href="#music">ENTER MY WORLD ↓</a>
-  <div class="small">JAHSEHIMINTROVERTED</div>
-</section>
-
-<!-- MUSIC -->
-<section id="music">
-  <div class="eyebrow">A sound for the silence</div>
-  <h2>Some memories<br>have a <em>soundtrack.</em></h2>
-
-  <p>
-    Choose a song from your PC and let it
-    accompany this little journey.
-  </p>
-
-  <div class="panel">
-    <h3 style="font-weight:normal">The song I couldn't explain</h3>
-    <p style="font-size:11px">YOUR MUSIC · YOUR MOMENT</p>
-
-    <input type="file" id="songFile" accept="audio/*">
-    <audio id="player" controls preload="none"></audio>
-
-    <p id="musicStatus" style="font-size:12px" aria-live="polite">
-      Choose an audio file to begin.
+    <p>
+      Some conversations end, but the things left unsaid
+      can stay with us for a long time.
     </p>
+
+    <p>
+      I made this because there are things I wanted
+      to express honestly, without an argument
+      and without expecting anything from you.
+    </p>
+
+    <a href="#letter" class="button">Read my letter ↓</a>
   </div>
 </section>
 
-<!-- STORY TIMELINE -->
-<section id="story">
-  <div class="eyebrow">Fragments of a memory</div>
-  <h2>Things I will<br><em>remember.</em></h2>
+<!-- THE LETTER IS VISIBLE AUTOMATICALLY -->
+<section id="letter">
+  <div class="container">
+    <div class="eyebrow">Words I kept inside</div>
+    <h2>A letter for <span class="purple">you.</span></h2>
 
-  <div class="timeline">
-    <div class="event">
-      <h3>01 — The beginning</h3>
-      <p>
-        There was a time when a simple conversation
-        could change the mood of an entire day.
-      </p>
-    </div>
+    <div class="letter">
 
-    <div class="event">
-      <h3>02 — The little things</h3>
-      <p>
-        The small moments, the laughs, the memories
-        that seemed ordinary until they became special.
-      </p>
-    </div>
+      <p>Hey,</p>
 
-    <div class="event">
-      <h3>03 — The silence</h3>
       <p>
-        Then came a day after which we never really
-        talked. There are things I still wish we
-        could have understood about each other.
+        I don't really know how to begin this, because
+        there are feelings that are difficult to explain
+        when so much has changed.
       </p>
-    </div>
 
-    <div class="event">
-      <h3>04 — The next chapter</h3>
       <p>
-        I don't know what happens next. But I know
-        that one difficult chapter doesn't have to
-        define the rest of the story.
+        Since that day, we've barely talked, and I have
+        spent time trying to understand everything
+        and find the right words.
       </p>
+
+      <p>
+        I'm not going to pretend that it didn't hurt.
+        It did. What happened meant something to me,
+        and I needed time to understand how I felt.
+      </p>
+
+      <p>
+        But I'm not writing this to blame you,
+        make you feel guilty, or ask you to feel
+        something you don't feel.
+      </p>
+
+      <p>
+        I just want you to know that the moments we shared
+        mattered to me. Even though things aren't the
+        same now, I won't pretend they meant nothing.
+      </p>
+
+      <p>
+        Maybe we have things we never got to say.
+        Maybe we see everything differently.
+        I'd rather have an honest conversation than
+        keep making assumptions in silence.
+      </p>
+
+      <p>
+        If you're comfortable talking to me someday,
+        I'd be willing to listen. We don't have to
+        figure everything out in one conversation.
+      </p>
+
+      <p>
+        And if that's not what you want, I'll respect
+        your decision. I don't want this page to feel
+        like pressure. I just wanted to express myself
+        in a way I could finally put into words.
+      </p>
+
+      <p>
+        Whatever happens, I hope life brings you
+        peace, happiness, and good things.
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="signature">
+        — Jahsehimintroverted 🖤
+      </p>
+
     </div>
   </div>
 </section>
 
-<!-- THE LETTER -->
-<section id="letter-section">
-  <div class="eyebrow">The words I kept to myself</div>
-  <div class="heart">🥀</div>
-  <h2>One last <em>letter.</em></h2>
+<!-- FINAL MESSAGE -->
+<section>
+  <div class="container">
+    <div class="heart">🌙</div>
 
-  <p>
-    Not to blame you. Not to make you feel guilty.
-    Just to say what silence never could.
-  </p>
+    <div class="eyebrow">No pressure. Just honesty.</div>
 
-  <button class="btn" id="revealBtn">
-    OPEN THE LETTER ✦
-  </button>
-
-  <div class="panel" id="letter">
-    <div class="eyebrow">To someone who mattered</div>
+    <h1 style="font-size:clamp(38px, 8vw, 64px)">
+      The door is<br>
+      <span class="purple">still open.</span>
+    </h1>
 
     <p>
-      I don't know how you remember me, or what
-      this chapter means to you now.
+      I can't change the past, and I can't decide
+      what happens next. But if you ever want to have
+      a calm, honest conversation, I'm open to it.
     </p>
 
     <p>
-      I know what I felt was real to me. I cared,
-      and that is why the silence after that day
-      has left me with so many unanswered questions.
+      No promises needed. No pressure to reply.
+      Just two people having a conversation,
+      if we both want one.
     </p>
 
-    <p>
-      I'm not writing this to blame you or ask you
-      to feel something you don't feel.
-      I just wish we could have talked.
-    </p>
+    <div class="divider"></div>
 
-    <p>
-      Maybe there are things you wanted to say too.
-      Maybe we saw things differently.
-      I'd rather listen and understand than keep
-      guessing what was going through your mind.
+    <p class="purple">
+      Some things deserve honesty, even when
+      the ending is uncertain.
     </p>
-
-    <p>
-      Whatever happens, what we shared mattered
-      to me. I hope life treats you kindly.
-    </p>
-
-    <div class="rule"></div>
-    <div class="signature">— Jahsehimintroverted 🖤</div>
   </div>
 </section>
-
-<!-- OPEN DOOR -->
-<section id="talk">
-  <div class="eyebrow">Maybe the story isn't finished</div>
-  <div class="heart">🖤</div>
-
-  <h2>We never got<br>to <em>talk.</em></h2>
-
-  <p>
-    It's been quiet between us since that day.
-    I don't want to assume what you feel,
-    and I don't expect you to have all the answers.
-  </p>
-
-  <div class="panel">
-    <div class="eyebrow">An open door, not an expectation</div>
-
-    <h2 style="font-size:32px">
-      Would you be<br><em>willing to talk?</em>
-    </h2>
-
-    <p>
-      If there's something you want to say,
-      I'm willing to listen.
-      If you have questions, we can talk honestly.
-      And if things have changed, I'd rather
-      understand than make assumptions.
-    </p>
-
-    <p>
-      No pressure to reply.
-      No demands. Just a chance to hear each other.
-    </p>
-
-    <button class="btn" id="talkBtn">
-      LEAVE THE DOOR OPEN
-    </button>
-
-    <p id="talkMessage" style="display:none">
-      Whenever you're comfortable talking,
-      I'm willing to listen. 🖤
-    </p>
-  </div>
-
-  <div class="small">NO PRESSURE · NO EXPECTATIONS</div>
-</section>
-
-</main>
 
 <footer>
-  SOMEWHERE BETWEEN MEMORY AND TOMORROW<br><br>
-  JAHSEHIMINTROVERTED · 𖤐
+  Made with honesty, not expectations. 🖤
+  <br><br>
+  ꧁༒☬𖤐 JAHSEHIMINTROVERTED 𖤐☬༒꧂
 </footer>
 
 <script>
-// Create the stars
-const sky = document.getElementById("sky");
+const stars = document.getElementById("stars");
 
-for (let i = 0; i < 120; i++) {
-  const star = document.createElement("span");
+for (let i = 0; i < 100; i++) {
+  const star = document.createElement("div");
   star.className = "star";
+
   star.style.left = Math.random() * 100 + "%";
   star.style.top = Math.random() * 100 + "%";
-  star.style.animationDuration = (2 + Math.random() * 4) + "s";
-  star.style.animationDelay = Math.random() * 4 + "s";
-  sky.appendChild(star);
+  star.style.animationDelay = Math.random() * 3 + "s";
+  star.style.animationDuration =
+    (2 + Math.random() * 4) + "s";
+
+  stars.appendChild(star);
 }
-
-// Floating particles
-const reducedMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
-).matches;
-
-if (!reducedMotion) {
-  setInterval(() => {
-    const particle = document.createElement("span");
-    particle.className = "particle";
-    particle.textContent = Math.random() > .5 ? "✦" : "·";
-    particle.style.left = Math.random() * 100 + "%";
-    particle.style.setProperty(
-      "--duration", (7 + Math.random() * 7) + "s"
-    );
-    particle.style.fontSize = (10 + Math.random() * 10) + "px";
-    sky.appendChild(particle);
-
-    setTimeout(() => particle.remove(), 15000);
-  }, 700);
-}
-
-// Music player: audio stays on this device
-const songFile = document.getElementById("songFile");
-const player = document.getElementById("player");
-const musicStatus = document.getElementById("musicStatus");
-let audioURL = null;
-
-songFile.addEventListener("change", () => {
-  const file = songFile.files[0];
-  if (!file) return;
-
-  if (audioURL) URL.revokeObjectURL(audioURL);
-
-  audioURL = URL.createObjectURL(file);
-  player.src = audioURL;
-  musicStatus.textContent = "Selected: " + file.name;
-  player.load();
-});
-
-// Reveal the letter
-document.getElementById("revealBtn").addEventListener("click", () => {
-  document.getElementById("letter").style.display = "block";
-  document.getElementById("revealBtn").textContent = "LETTER OPENED ✦";
-  document.getElementById("revealBtn").disabled = true;
-  document.getElementById("letter").scrollIntoView({
-    behavior: "smooth", block: "center"
-  });
-});
-
-// Open-door message
-document.getElementById("talkBtn").addEventListener("click", () => {
-  document.getElementById("talkMessage").style.display = "block";
-  document.getElementById("talkBtn").textContent = "THE DOOR IS OPEN";
-});
-
-// Release the audio reference when leaving
-window.addEventListener("pagehide", () => {
-  if (audioURL) URL.revokeObjectURL(audioURL);
-});
 </script>
+
 </body>
 </html>
